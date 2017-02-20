@@ -22,8 +22,7 @@
 
 	<!-- 加载应用属性实例，可通过 @Value("#{APP_PROP['jdbc.driver']}") String jdbcDriver 
 		方式引用 -->
-	<util:properties id="APP_PROP" location="classpath:jeesite.properties"
-		local-override="true" />
+	<util:properties id="APP_PROP" location="classpath:jeesite.properties" local-override="true" />
 
 	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。 -->
 	<context:component-scan base-package="com.jd.kibana"><!-- base-package 如果多个，用“,”分隔 -->
@@ -43,4 +42,22 @@
 		<property name="configLocation" value="classpath:${ehcache.configFile}" />
 	</bean>
 
+	<!-- 单点登录JSF服务接口 -->
+	<jsf:consumer id="ssoService" interface="com.jd.ssa.service.SsoService"	protocol="jsf" alias="v1" timeout="10000" />
+		
+	<!-- 单点登录拦截器配置 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<!-- 单点登录springmvc 拦截器bean -->
+			<bean id="springSSOInterceptor"
+				class="com.jd.common.springmvc.interceptor.SpringSSOInterceptor">
+				<property name="loginUrl" value="${login.address}" />
+				<property name="excludePath" value="${sso.exclude.path}" />
+				<property name="ssoService" ref="ssoService" />
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
 </beans>
