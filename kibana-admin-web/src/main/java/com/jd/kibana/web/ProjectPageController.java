@@ -17,7 +17,6 @@ import com.bucuoa.west.orm.app.common.Expression;
 import com.bucuoa.west.orm.app.common.WPage;
 import com.jd.kibana.PageComponnet;
 import com.jd.kibana.entity.ProjectPage;
-import com.jd.kibana.entity.ReportChart;
 import com.jd.kibana.service.ProjectPageService;
 import com.jd.kibana.service.ReportChartService;
 import com.thinkgem.jeesite.modules.sys.utils.JSONUtils;
