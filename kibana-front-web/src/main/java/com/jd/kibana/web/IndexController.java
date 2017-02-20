@@ -23,6 +23,9 @@ public class IndexController {
 	@Autowired
 	private ProjectService projectService;
 
+	/**
+	 * 我的项目
+	 */
 	@RequestMapping(value = "")
 	public String index(Model model) {
 		

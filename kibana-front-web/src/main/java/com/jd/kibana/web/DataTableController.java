@@ -37,7 +37,9 @@ public class DataTableController {
 	@Autowired
 	private DataTableService dataTableService;
 
-
+	/**
+	 * 报表展示
+	 */
 	@RequestMapping(value = "/tableShow")
 	public String datashow( Model model, Long id) {
 		try {

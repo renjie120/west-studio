@@ -79,19 +79,6 @@ public class ProjectPageController {
 		return "/modules/projectPage/showpage";
 	}
 
-	@RequestMapping(value = "/save")
-	public String save(RedirectAttributes redirectAttributes, ProjectPage entity) {
-
-		try {
-			projectPageService.saveEntity(entity);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return "redirect:list/" + entity.getProjectId();
-	}
-
 	@RequestMapping(value = "/list/{projectId}")
 	public String list(HttpServletRequest request, Model model, WPage page, @PathVariable("projectId") Long projectId) {
 
