@@ -458,6 +458,12 @@
 			<artifactId>west-shard-orm</artifactId>
 			<version>${west.version}</version>
 		</dependency>
+		
+		<dependency>
+		  <groupId>com.jd</groupId>
+		  <artifactId>jsf</artifactId>
+		  <version>1.6.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

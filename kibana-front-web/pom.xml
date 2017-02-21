@@ -17,7 +17,7 @@
 
 		<dependency>
 			<artifactId>kibana-entity</artifactId>
-			<groupId>bucuoa.com</groupId>
+			<groupId>jd.com</groupId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
