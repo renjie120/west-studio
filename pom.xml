@@ -59,7 +59,7 @@
 	<!-- 设定主仓库，按设定顺序进行查找。 -->
 	<repositories>
 
-	
+
 	</repositories>
 
 	<!-- 依赖项定义 -->
@@ -223,11 +223,6 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>javax.servlet-api</artifactId> 
-			<version>3.0.1</version> <scope>provided</scope> </dependency> <dependency> 
-			<groupId>javax.servlet.jsp</groupId> <artifactId>jsp-api</artifactId> <version>2.2</version> 
-			<scope>provided</scope> </dependency> -->
-		<!-- WEB end -->
 
 		<!-- CACHE begin -->
 		<dependency>
@@ -280,12 +275,6 @@
 			<version>${shiro.version}</version>
 		</dependency>
 		<!-- SECURITY end -->
-
-
-
-		<!-- 支持activiti缓存 -->
-		<!-- <dependency> <groupId>org.infinispan</groupId> <artifactId>infinispan-core</artifactId> 
-			<version>5.1.7.Final</version> </dependency> -->
 
 		<!-- LOGGING begin -->
 		<dependency>
@@ -374,9 +363,6 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
-		<!-- fastjson json <dependency> <groupId>com.alibaba</groupId> <artifactId>fastjson</artifactId> 
-			<version>${fastjson.version}</version> </dependency> -->
-
 		<!-- xstream xml -->
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
@@ -389,25 +375,6 @@
 			<groupId>net.sf.dozer</groupId>
 			<artifactId>dozer</artifactId>
 			<version>${dozer.version}</version>
-		</dependency>
-
-		<!-- freemarker engine -->
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<version>${freemarker.version}</version>
-		</dependency>
-
-		<!-- email -->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1.1</version>
 		</dependency>
 
 		<!-- poi office -->
@@ -448,136 +415,17 @@
 		<!-- TEST end -->
 
 		<dependency>
-			<groupId>com.jd.common</groupId>
-			<artifactId>sso-uim-spring</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.bucuoa.west</groupId>
 			<artifactId>west-shard-orm</artifactId>
 			<version>${west.version}</version>
 		</dependency>
-		
-		<dependency>
-		  <groupId>com.jd</groupId>
-		  <artifactId>jsf</artifactId>
-		  <version>1.6.0</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
-	
- 	<plugins>
 
-			<!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
 		
-			</plugin>
 
-
-			<!-- war 打包插件, 设定war包名称不带版本号 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<packagingExcludes>
-						<!-- WEB-INF/classes/com/thinkgem/jeesite/** -->
-						WEB-INF/classes/org/apache/ibatis/**,
-						WEB-INF/classes/org/mybatis/spring/**
-					</packagingExcludes>
-					<warSourceExcludes>
-						static/bootstrap/2.3.1/docs/**,
-						static/ckeditor/_samples/**,
-						static/ckeditor/_source/**,
-						static/ckfinder/_samples/**,
-						static/ckfinder/help/**,
-						static/compressor*/**,
-						static/jquery-jbox/2.3/docs/**,
-						static/jquery-jbox/2.3/Skins2/**,
-						static/jquery-validation/1.11.0/demo/**,
-						static/jquery-ztree/3.5.12/demo/**,
-						static/My97DatePicker/docs/**,
-						static/supcan/doc/**,
-						static/SuperSlide/demo/**,
-						static/treeTable/demo/**<!-- , -->
-						<!-- userfiles/** --><!-- ,/**/*.jsp -->
-						,
-						test/**
-					</warSourceExcludes>
-					<webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory><!-- 
-						<webXml>${project.basedir}/target/jspweb.xml</webXml> -->
-					<warName>${project.artifactId}</warName>
-				</configuration>
-			</plugin>
-
-			<!-- Eclipse 插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>${downloadSources}</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
-					<jeeversion>5.0</jeeversion>
-					<!-- <jeeversion>6.0</jeeversion> -->
-					<additionalConfig>
-						<file>
-							<name>.settings/org.eclipse.core.resources.prefs</name>
-							<content>
-								<![CDATA[eclipse.preferences.version=1${line.separator}encoding/<project>=${project.build.sourceEncoding}${line.separator}]]>
-							</content>
-						</file>
-					</additionalConfig>
-					<additionalProjectnatures>
-						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-					</additionalProjectnatures>
-				</configuration>
-			</plugin>
-
-			<!-- resource插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-
-			<!-- install插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>2.4</version>
-			</plugin>
-
-			<!-- clean插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.5</version>
-			</plugin>
-
-			<!-- ant插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-			</plugin>
-
-			<!-- dependency插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.5.1</version>
-			</plugin>
-		</plugins>
 	</build>
-	
+
 </project>

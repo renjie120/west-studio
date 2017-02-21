@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
-<link href="${ctxStatic}/bootstrap/2.3.1/css_cerulean/bootstrap.min.css"
-	type="text/css" rel="stylesheet">
+
 
 <table id="contentTable"
 	class="table table-striped table-bordered table-condensed">

@@ -42,7 +42,7 @@
       
                     </li>
                     
-                    <li>
+                    <li class="active">
                         <a href="#">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">Kibana</span>
@@ -86,7 +86,6 @@
                 </button>
                 <nav class="page-tabs J_menuTabs">
                     <div class="page-tabs-content">
-                        <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
                     </div>
                 </nav>
           
@@ -99,7 +98,7 @@
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${ctx}/project/empty" frameborder="0" data-id="index_v2.html" seamless></iframe>
             </div>
             <div class="footer">
-                <div class="pull-right">&copy; 2016-2017 <a href="http://www.jd.com/" target="_blank">jd kibana</a>
+                <div class="pull-right">&copy; 2016-2017 <a href="http://www.jd.com/" target="_blank">jd data support center </a>
                 </div>
             </div>
         </div>
@@ -222,28 +221,6 @@
 
                     </div>
                     <div id="tab-3" class="tab-pane">
-
-                        <div class="sidebar-title">
-                            <h3> <i class="fa fa-cube"></i> 最新任务</h3>
-                            <small><i class="fa fa-tim"></i> 您当前有14个任务，10个已完成</small>
-                        </div>
-
-                        <ul class="sidebar-list">
-                            <li>
-                                <a href="#">
-                                    <div class="small pull-right m-t-xs">9小时以后</div>
-                                    <h4>市场调研</h4> 按要求接收教材；
-
-                                    <div class="small">已完成： 22%</div>
-                                    <div class="progress progress-mini">
-                                        <div style="width: 22%;" class="progress-bar progress-bar-warning"></div>
-                                    </div>
-                                    <div class="small text-muted m-t-xs">项目截止： 4:00 - 2015.10.01</div>
-                                </a>
-                            </li>
-                        
-
-                        </ul>
 
                     </div>
                 </div>

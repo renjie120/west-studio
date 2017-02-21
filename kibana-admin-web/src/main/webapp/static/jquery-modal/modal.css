@@ -76,6 +76,7 @@
     line-height: 30px;
     text-align: center;
 	border-bottom: 1px solid #ccc;
+	margin:1px 0;
 }
 .close-pos-r-t {
 	position: absolute;

@@ -4,7 +4,7 @@
 <head>
 	<title>用户管理</title>
 	<meta name="decorator" content="default"/>
-	<link rel="stylesheet" type="text/css" href="${ctxStatic}/jquery-modal/modal.css" />
+	<link rel="stylesheet" type="text/css" href="${ctxStatic}/jquery-modal/modal.css?t=1" />
 	<script type="text/javascript" src="${ctxStatic}/jquery-modal/modal.js"></script>
 	<style type="text/css">
 	h1 {
