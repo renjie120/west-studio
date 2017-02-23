@@ -18,6 +18,7 @@ import com.jd.kibana.entity.ProjectPage;
 import com.jd.kibana.service.ProjectPageService;
 import com.jd.kibana.service.ProjectService;
 import com.jd.kibana.service.ReportChartService;
+import com.jd.kibana.service.ReportFormService;
 import com.jd.kibana.utils.KJsonUtils;
 
 /**
@@ -36,6 +37,8 @@ public class ProjectController {
 	private ReportChartService reportChartService;
 	@Autowired
 	private ProjectPageService projectPageService;
+	@Autowired
+	private ReportFormService reportFormService;
 
 	@RequestMapping(value = "/index")
 	public String list(Long id, Model model, WPage page) {
@@ -85,18 +88,28 @@ public class ProjectController {
 		if (componnets != null && !componnets.equals("")) {
 			try {
 				List<PageComponnet> list = KJsonUtils.json2list(componnets, PageComponnet.class);
-
+				
+				List<PageComponnet> numberlist = new ArrayList<PageComponnet>();
+				List<PageComponnet> comlist = new ArrayList<PageComponnet>();
+				
 				for (PageComponnet com : list) {
-					if (com.getType().equals("chart")) {
+					if (com.getType().equals("chart") ) {
 						Long idx = com.getId();
 						String script = reportChartService.buildScript(idx);
 						if (script != null) {
 							com.setScript(script);
+							comlist.add(com);
 						}
+					}else 	if (com.getType().equals("table")) {
+						comlist.add(com);
+					}else 	if (com.getType().equals("number")) {
+						String numberData = reportFormService.getNumberData(com.getId());
+						com.setScript(numberData);
+						numberlist.add(com);
 					}
 				}
-				
-				model.addAttribute("componnets", list);
+				model.addAttribute("numbers", numberlist);
+				model.addAttribute("componnets", comlist);
 
 			} catch (Exception e) {
 				e.printStackTrace();

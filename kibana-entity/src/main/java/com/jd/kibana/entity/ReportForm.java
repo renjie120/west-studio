@@ -29,7 +29,7 @@ public class ReportForm {
 	private String config; // 配置
 
 	@Column(name = "table_id")
-	private Integer tableId; 
+	private Long tableId; 
 	
 	@Column(name = "statux")
 	private Integer statux; 
@@ -78,11 +78,11 @@ public class ReportForm {
 		this.config = config;
 	}
 
-	public Integer getTableId() {
+	public Long getTableId() {
 		return tableId;
 	}
 
-	public void setTableId(Integer tableId) {
+	public void setTableId(Long tableId) {
 		this.tableId = tableId;
 	}
 

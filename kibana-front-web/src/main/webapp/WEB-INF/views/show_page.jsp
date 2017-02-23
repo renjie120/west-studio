@@ -75,22 +75,29 @@ body {
 </style>
 </head>
 <body>
+<div>
+${pageinfo.schemax}
+</div>
+<c:if test="${fn:length(numbers) >0}">
 <div id="number-area"  style="width: 90%; 	height: 150px;clear:both;">
-<div class="number-box">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        今日评价数
-                    </div>
-                      <div class="ibox-number">
-                    18,035,309
-                    </div>
-                </div>
-				
-            </div>
-            
-
+		<c:forEach items="${numbers}" var="entity">
+			<div class="number-box">
+			                <div class="ibox float-e-margins">
+			                    <div class="ibox-title">
+			                        ${entity.name }
+			                    </div>
+			                      <div class="ibox-number">
+			                    
+			                     <fmt:formatNumber value="${entity.script }"  pattern="#,#00"/>
+			                    </div>
+			                </div>
+			</div>
+            </c:forEach>
    </div>
-   <div style="width: 100%; height: 15px"></div>
+      <div style="width: 100%; height: 15px"></div>
+   
+   </c:if>
+   
 	<div id="bg" style="width: 90%; height: 100%">
 
 		<c:forEach items="${componnets}" var="entity">

@@ -40,6 +40,29 @@ public class JdbcDataGather {
 		return data;
 	}
 	
+	public Object getSingleData(String sql)
+	{
+		jdbcUtils.getConnection();
+		List<Map<String, Object>> data = null;
+		try {
+			data = jdbcUtils.findModeResult(sql, null);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally
+		{
+			jdbcUtils.releaseConn();
+		}
+		
+		Object result = null;
+		if(data != null && data.size() > 0)
+		{
+			Map<String, Object> map = data.get(0);
+			result = map.get("x");
+		}
+		
+		return result;
+	}
+	
 	public List<String> getMetaData(String sql)
 	{
 		jdbcUtils.getConnection();

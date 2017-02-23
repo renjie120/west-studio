@@ -10,7 +10,7 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/projectForm/list?projectId=${entity.projectId}${param.projectId}">报表列表</a></li>
-		<li class="active"><a href="${ctx}/projectForm/add?id=${id}">报表<shiro:hasPermission name="sys:user:edit">${not empty id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="sys:user:edit">查看</shiro:lacksPermission></a></li>
+		<li class="active"><a href="${ctx}/projectForm/add?id=${param.id}">报表${not empty param.id?'修改':'添加'}</a></li>
 	</ul><br/>
 	<form id="inputForm"  action="${ctx}/projectForm/save" method="post" class="form-horizontal">
 		<input type="hidden" name="id" value="${param.id}">
@@ -20,7 +20,7 @@
 		<div class="control-group">
 			<label class="control-label">报表名称:</label>
 			<div class="controls">
-			<input type="input" name="name" id="name" value="${entity.name}" />
+			<input type="text" name="name" id="name" value="${entity.name}" />
 			</div>
 		</div>
 	<div class="control-group">
@@ -41,13 +41,22 @@
 		&nbsp;</c:if>
 			</div>
 		</div>
-				<div class="control-group">
+		
+		<div class="control-group">
+			<label class="control-label">报表类型:</label>
+			<div class="controls">
+			<input type="text" name="formType" id="formType" value="${entity.formType}" />
+			</div>
+		</div>
+		
+		<div class="control-group">
 			<label class="control-label">描述:</label>
 			<div class="controls">
 			<textarea rows="5" style="width:500px"  name="description" id="description" >${entity.description}</textarea>
 			</div>
 		</div>
-				<div class="control-group">
+		
+	<div class="control-group">
 			<label class="control-label">状态:</label>
 			<div class="controls">
 				<select style="width: 150px" name="statux">
