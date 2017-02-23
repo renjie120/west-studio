@@ -65,6 +65,19 @@
 			<input type="text" name="driver" id="driver" value="${entity.driver}" />
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label">状态:</label>
+			<div class="controls">
+				<select style="width: 150px" name="statux">
+					<option value="-1">全部</option>
+					<c:forEach var="item" items="${fns:getDictList('IS_VALID')}">
+						<option value="${item.value}" <c:if test="${entity.statux == item.value }">selected</c:if>>
+							${item.label}
+						</option>
+					</c:forEach>
+					</select>
+			</div>
+		</div>
 
 		<div class="form-actions">
 		<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
