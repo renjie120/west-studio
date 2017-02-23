@@ -63,7 +63,7 @@
 		<div class="control-group">
 			<label class="control-label">参数:</label>
 			<div class="controls">
-						<textarea rows="5" style="width:600px" name="script" id="script" >${entity.params}</textarea>
+						<textarea rows="5" style="width:600px" name="params" id="params" >${entity.params}</textarea>
 			</div>
 		</div>
 
