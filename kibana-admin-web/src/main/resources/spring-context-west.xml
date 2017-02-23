@@ -28,11 +28,6 @@
 	<bean id="excetueManager" class="com.bucuoa.west.orm.core.ExecuteManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<!-- 数据源配置, 不使用连接池 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="${jdbc.driver}" /> <property name="url" 
-		value="${jdbc.url}" /> <property name="username" value="${jdbc.username}"/> 
-		<property name="password" value="${jdbc.password}"/> </bean> -->
 		
 	<bean id="robotdataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -40,9 +35,9 @@
 		<property name="driverClassName" value="${jdbc.driver}" />
 
 		<!-- 基本属性 url、user、password -->
-		<property name="url" value="${west.jdbc.url}" />
-		<property name="username" value="${west.jdbc.username}" />
-		<property name="password" value="${west.jdbc.password}" />
+		<property name="url" value="${kibana.jdbc.url}" />
+		<property name="username" value="${kibana.jdbc.username}" />
+		<property name="password" value="${kibana.jdbc.password}" />
 
 		<!-- 配置初始化大小、最小、最大 -->
 		<property name="initialSize" value="${jdbc.pool.init}" />
