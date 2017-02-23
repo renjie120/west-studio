@@ -29,7 +29,7 @@
 			<select style="width: 150px" name="datasourceType">
 					<option value="-1">全部</option>
 					<c:forEach var="item" items="${fns:getDictList('SYS_DATASOURCE_TYPE')}">
-					<c:if test="${item.description != 0}">
+					<c:if test="${item.description != '0'}">
 						<option value="${item.value}" <c:if test="${entity.datasourceType == item.value }">selected</c:if>>
 							${item.label}
 						</option>
