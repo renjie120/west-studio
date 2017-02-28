@@ -8,17 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>我的项目</title>
-    <link rel="shortcut icon" href="favicon.ico"> <link href="${ctxStatic}/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
-    <link href="${ctxStatic}/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico"> 
 
-    <!-- Morris -->
-    <link href="${ctxStatic}/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-
-    <!-- Gritter -->
-    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
-
-    <link href="${ctxStatic}/css/animate.min.css" rel="stylesheet">
-    <link href="${ctxStatic}/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+   <base target="_blank">
+    
+    <link href="${ctxStatic}/bootstrap/2.3.1/css_${not empty cookie.theme.value ? cookie.theme.value : 'cerulean'}/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="${ctxStatic}/css/style.min.css?v=4.0.0" type="text/css" rel="stylesheet" />
+    
 <style type="text/css">
 
 .item2 div {
@@ -46,13 +42,38 @@
 </head>
 
 <body class="gray-bg">
-    <div class="wrapper wrapper-content">
+<div id="main" style="width: auto;">
+<div id="header" class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="brand"><span id="productName">京东看板</span></div>
+				<ul id="userControl" class="nav pull-right">
+			
+					<li id="userInfo" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, ${username }&nbsp;<span id="notifyNum" class="label label-info hide"></span></a>
+					</li>
+					<li><a href="/kibana-admin-web/a/logout" title="退出登录">退出</a></li>
+					<li>&nbsp;</li>
+				</ul>
+				
+				<div class="nav-collapse">
+					<ul id="menu" class="nav" style="*white-space:nowrap;float:none;">
+
+								<li class="menu active">
+										<a class="menu" href="javascript:"  ><span>我的项目</span></a>
+								</li>
+						
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+	    </div>
+   <div style="height:60px;width:100%;clear:both"></div>
+    <div class="container-fluid"  >
         <div class="row">
         
         <c:forEach items="${projectlist}" var="project">
-            <div class="col-sm-3 item2">
+            <div class="col-sm-3 item2" style="width:22%;float:left;margin-left:10px">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-title">
+                    <div class="ibox-title" style="min-height: 28px;">
                         <h5>${project.name}</h5>
                     </div>
                     <div class="ibox-content">
@@ -68,24 +89,8 @@
         </div>
         </div>
 
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.5"></script>
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/jquery.flot.symbol.js"></script>
-    <script src="js/plugins/peity/jquery.peity.min.js"></script>
-    <script src="js/demo/peity-demo.min.js"></script>
-    <script src="js/content.min.js?v=1.0.0"></script>
-    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="js/plugins/easypiechart/jquery.easypiechart.js"></script>
-    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script src="js/demo/sparkline-demo.min.js"></script>
 
+</div>
 </body>
 
 </html>

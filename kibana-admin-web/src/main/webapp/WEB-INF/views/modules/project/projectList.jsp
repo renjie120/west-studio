@@ -16,26 +16,7 @@
 			<li><a href="${ctx}/project/add">添加</a></li>
 		</shiro:hasPermission>
 	</ul>
-<%-- 	<form id="searchForm" action="${ctx}/asset/list" method="post"
-		class="breadcrumb form-search ">
-		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}" />
-		<input id="pageSize" name="pageSize" type="hidden"
-			value="${page.pageSize}" />
 
-		<ul class="ul-form">
-			<li>ip: <input type="text" name="ip"> &nbsp;&nbsp; 机房:
-				<select style="width: 150px" name="isValid">
-					<option value="-1">全部</option>
-					<c:forEach var="item" items="${fns:getDictList('IS_VALID')}">
-						<option value="${item.value}"
-							<c:if test="${isValid == item.value }">selected</c:if>>${item.label}</option>
-					</c:forEach>
-			</select>
-			<li class="btns"><input id="btnSubmit" class="btn btn-primary"
-				type="submit" value="查询" /></li>
-			<li class="clearfix"></li>
-		</ul>
-	</form> --%>
 	<sys:message content="${message}" />
 	<table id="contentTable"
 		class="table table-striped table-bordered table-condensed">
@@ -55,7 +36,7 @@
 						<a href="${ctx}/reportChart/list?projectId=${entity.id}" target="mainFrame" onclick="top.addTab2($(this))" data-href="/reportChart/list?id=${entity.id}" title="设计${entity.name}图表"><img src="${ctxStatic}/image/chart.gif" width="25" /></a>
 						<a href="${ctx}/projectForm/list?projectId=${entity.id}" target="mainFrame" onclick="top.addTab2($(this))" data-href="/projectForm/list?id=${entity.id}"  title="设计${entity.name}报表"><img src="${ctxStatic}/image/form.gif" width="20"/></a>
 						<a href="${ctx}/projectPage/list/${entity.id}" target="mainFrame" onclick="top.addTab2($(this))" data-href="/projectPage/list/${entity.id}"  title="设计${entity.name}页面"><img src="${ctxStatic}/image/page.gif" width="20"/></a>
-						
+						<a href="${ctx}/projectUser/list?projectId=${entity.id}" target="mainFrame" onclick="top.addTab2($(this))" data-href="/projectUser/list?projectId=${entity.id}"  title="${entity.name}成员"><img src="${ctxStatic}/image/user_icon.jpg" width="20"/></a>
 					</td>
 				</tr>
 			</c:forEach>

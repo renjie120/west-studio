@@ -17,6 +17,7 @@ import com.jd.kibana.entity.Project;
 import com.jd.kibana.entity.ProjectPage;
 import com.jd.kibana.service.ProjectPageService;
 import com.jd.kibana.service.ProjectService;
+import com.jd.kibana.service.ProjectUserService;
 import com.jd.kibana.service.ReportChartService;
 import com.jd.kibana.service.ReportFormService;
 import com.jd.kibana.utils.KJsonUtils;
@@ -29,7 +30,7 @@ import com.jd.kibana.utils.KJsonUtils;
  */
 @Controller
 @RequestMapping(value = "/project")
-public class ProjectController {
+public class ProjectController extends BaseController {
 
 	@Autowired
 	private ProjectService projectService;
@@ -39,6 +40,8 @@ public class ProjectController {
 	private ProjectPageService projectPageService;
 	@Autowired
 	private ReportFormService reportFormService;
+	@Autowired
+	private ProjectUserService projectUserService;
 
 	@RequestMapping(value = "/index")
 	public String list(Long id, Model model, WPage page) {
@@ -48,6 +51,14 @@ public class ProjectController {
 			pageinfo = projectService.findEntityById(id);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		String userName = super.getUserName();
+		boolean isMember = projectUserService.checkProjectMember(userName, id);
+		
+		if(!isMember)
+		{
+			return "/empty";
 		}
 		
 		try {
@@ -81,7 +92,14 @@ public class ProjectController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
+		String userName = super.getUserName();
+		boolean isMember = projectUserService.checkProjectMember(userName, pageinfo.getProjectId());
+		
+		if(!isMember)
+		{
+			return "/empty";
+		}
 //		String schema = pageinfo.getSchema();
 
 		String componnets = pageinfo.getComponnet();

@@ -1,17 +1,17 @@
 package com.jd.kibana.web;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bucuoa.west.orm.app.common.Expression;
-import com.jd.kibana.entity.Project;
 import com.jd.kibana.service.ProjectService;
-
+import com.jd.common.web.LoginContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * 数据源
  * @author jake
@@ -22,6 +22,7 @@ import com.jd.kibana.service.ProjectService;
 public class IndexController {
 	@Autowired
 	private ProjectService projectService;
+	protected Logger logger = LoggerFactory.getLogger(getClass());
 
 	/**
 	 * 我的项目
@@ -30,14 +31,16 @@ public class IndexController {
 	public String index(Model model) {
 		
 		try {
-			List<Expression> where = new ArrayList<Expression>();
 			
-			Expression ex2 = new Expression("statux",1);
-			where.add(ex2);
+			LoginContext loginContext = LoginContext.getLoginContext();
+			
+			String username = loginContext.getPin();
+			logger.info(username+"==>登录");
+			
+			List<Map<String, Object>> myProjectList = projectService.getMyProjectList(username);
+			model.addAttribute("projectlist",myProjectList);
+			model.addAttribute("username",username);
 
-			List<Project> projectlist = projectService.findEntityList(where, null);
-			
-			model.addAttribute("projectlist",projectlist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
