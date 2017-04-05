@@ -77,9 +77,9 @@
 		<property name="driverClassName" value="${jdbc.driver}" />
 
 		<!-- 基本属性 url、user、password -->
-		<property name="url" value="${kibana.jdbc.url}" />
-		<property name="username" value="${kibana.jdbc.username}" />
-		<property name="password" value="${kibana.jdbc.password}" />
+		<property name="url" value="${west.jdbc.url}" />
+		<property name="username" value="${west.jdbc.username}" />
+		<property name="password" value="${west.jdbc.password}" />
 
 		<!-- 配置初始化大小、最小、最大 -->
 		<property name="initialSize" value="${jdbc.pool.init}" />
