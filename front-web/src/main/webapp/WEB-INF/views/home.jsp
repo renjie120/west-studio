@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>我的项目</title>
+    <title>京东看板系统-我的项目</title>
     <link rel="shortcut icon" href="favicon.ico"> 
 
    <base target="_blank">
@@ -51,7 +51,7 @@
 					<li id="userInfo" class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, ${username }&nbsp;<span id="notifyNum" class="label label-info hide"></span></a>
 					</li>
-					<li><a href="/kibana-admin-web/a/logout" title="退出登录">退出</a></li>
+					<%-- <li><a href="${ctx}/logout" title="退出登录">退出</a></li> --%>
 					<li>&nbsp;</li>
 				</ul>
 				

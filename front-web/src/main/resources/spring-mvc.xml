@@ -11,7 +11,7 @@
 	<context:property-placeholder ignore-unresolvable="true" location="classpath:jeesite.properties,classpath:sso.properties" />
 	
 	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
-	<context:component-scan base-package="com.jd.kibana" use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
+	<context:component-scan base-package="com.jd.robot" use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
     
@@ -98,18 +98,5 @@
 		<property name="maxUploadSize" value="${web.maxUploadSize}" />  
 	</bean>
 	
-		<!-- 单点登录拦截器配置 -->
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<!-- 单点登录springmvc 拦截器bean -->
-			<bean id="springSSOInterceptor"
-				class="com.jd.common.springmvc.interceptor.SpringSSOInterceptor">
-				<property name="loginUrl" value="${login.address}" />
-				<property name="excludePath" value="${sso.exclude.path}" />
-				<property name="ssoService" ref="ssoService" />
-			</bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
-	
+
 </beans>

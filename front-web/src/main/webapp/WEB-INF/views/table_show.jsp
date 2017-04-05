@@ -40,13 +40,17 @@ td {
 
 #contentTable  tbody>tr:hover{background-color: #dafdf3;} 
 </style>
-
+<table >
+<tr><td>${form.name }</td></tr>
+</table>
 <table id="contentTable"
-	class="table table-striped table-bordered table-condensed">
+	class="table table-striped table-bordered table-condensed" style="margin-left: 10px;">
 	<thead>
+	
 		<tr>
-			<c:forEach items="${metaDatas}" var="metadata">
-				<th>${metadata}</th>
+			<c:forEach items="${metaDatasNew}" var="metadata">
+				<th>			
+				${metadata}</th>
 			</c:forEach>
 		</tr>
 	</thead>

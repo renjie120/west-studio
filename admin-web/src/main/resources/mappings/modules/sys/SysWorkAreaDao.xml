@@ -24,7 +24,7 @@
 	<select id="get" resultType="SysWorkArea">
 		SELECT 
 			<include refid="sysWorkAreaColumns"/>
-		FROM SYS_WORK_AREA a
+		FROM sys_work_area a
 		<include refid="sysWorkAreaJoins"/>
 		WHERE a.id = #{id}
 	</select>
@@ -32,7 +32,7 @@
 	<select id="findList" resultType="SysWorkArea">
 		SELECT 
 			<include refid="sysWorkAreaColumns"/>
-		FROM SYS_WORK_AREA a
+		FROM sys_work_area a
 		<include refid="sysWorkAreaJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
@@ -58,7 +58,7 @@
 	<select id="findAllList" resultType="SysWorkArea">
 		SELECT 
 			<include refid="sysWorkAreaColumns"/>
-		FROM SYS_WORK_AREA a
+		FROM sys_work_area a
 		<include refid="sysWorkAreaJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
@@ -71,7 +71,7 @@
 			a.id,
 			a.parent_id AS "parent.id",
 			a.parent_ids
-		FROM SYS_WORK_AREA a
+		FROM sys_work_area a
 		<include refid="sysWorkAreaJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
@@ -81,7 +81,7 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO SYS_WORK_AREA(
+		INSERT INTO sys_work_area(
 			id,
 			parent_id,
 			parent_ids,
@@ -113,7 +113,7 @@
 	</insert>
 	
 	<update id="update">
-		UPDATE SYS_WORK_AREA SET 	
+		UPDATE sys_work_area SET 	
 			parent_id = #{parent.id},
 			parent_ids = #{parentIds},
 			name = #{name},
@@ -127,14 +127,14 @@
 	</update>
 	
 	<update id="updateParentIds">
-		UPDATE SYS_WORK_AREA SET 
+		UPDATE sys_work_area SET 
 			parent_id = #{parent.id}, 
 			parent_ids = #{parentIds}
 		WHERE id = #{id}
 	</update>
 	
 	<update id="delete">
-		UPDATE SYS_WORK_AREA SET 
+		UPDATE sys_work_area SET 
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id} 
 	</update>

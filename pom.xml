@@ -2,17 +2,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>jd.com</groupId>
-	<artifactId>kibana</artifactId>
+	<groupId>bucuoa.com</groupId>
+	<artifactId>robot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
 		<module>commons</module>
-		<module>framework</module>
-		<module>kibana-admin-web</module>
-		<module>kibana-front-web</module>
-		<module>kibana-entity</module>
+		<module>entity</module>
+		<module>admin-framework</module>
+		<module>admin-web</module>
+		<module>front-web</module>
+		<module>admin-commons</module>
 	</modules>
 	<!-- 项目属性 -->
 	<properties>
@@ -423,7 +424,16 @@
 	</dependencies>
 
 	<build>
-
+	 <plugins>  
+        <plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-compiler-plugin</artifactId>  
+            <configuration>  
+                <source>${jdk.version}</source>  
+                <target>${jdk.version}</target>  
+            </configuration>  
+        </plugin>  
+    </plugins>  
 		
 
 	</build>

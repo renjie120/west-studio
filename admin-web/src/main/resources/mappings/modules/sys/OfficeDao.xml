@@ -38,7 +38,7 @@
 	<sql id="officeJoins">
 		LEFT JOIN sys_office p ON p.id = a.parent_id
 		LEFT JOIN sys_area ar ON ar.id = a.area_id
-		LEFT JOIN SYS_WORK_AREA swa ON ar.id = a.work_area
+		LEFT JOIN sys_work_area swa ON ar.id = a.work_area
 		LEFT JOIN sys_user pp ON pp.id = a.primary_person
 		LEFT JOIN sys_user dp ON dp.id = a.deputy_person
     </sql>

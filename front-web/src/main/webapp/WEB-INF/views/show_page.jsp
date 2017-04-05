@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-<script src="http://bank.bucuoa.com/static/jquery/jquery-1.8.3.min.js"></script>
+<script src="${ctxStatic }/jquery/jquery-1.8.3.min.js"></script>
 
 <style type="text/css">
 .chart-box {
@@ -18,7 +18,7 @@
 	padding: 32px 40px;
 	margin: 10px 5px auto;
 	float: left;
-	width: 520px;
+	
 	height: 400px;
 	background: #FFFFFF;
 	box-shadow: 0 0 6px 0 rgba(0,0,0,.12),0 10px 12px 0 rgba(170,182,206,.2),inset 0 -1px 0 0 rgba(255,255,255,.3);
@@ -32,9 +32,10 @@
 	padding: 0px 0px;
 	margin: 10px 5px auto;
 	float: left;
-	width: 600px;
+
 	height: 460px;
 	overflow: auto;
+	background-color: white;
 }
 
 .number-box{
@@ -42,12 +43,12 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	padding: 0px 0px;
 	    padding: 32px 40px;
 	float: left;
 	width: 220px;
 	height: 100px;
 	background: #ffffff;
+	margin:2px 2px;
 	box-shadow: 0 0 6px 0 rgba(0,0,0,.12),0 10px 12px 0 rgba(170,182,206,.2),inset 0 -1px 0 0 rgba(255,255,255,.3);
 }
 .ibox-title{
@@ -76,7 +77,13 @@ body {
 </head>
 <body>
 <div>
-${pageinfo.schemax}
+<c:if test="${not empty pageinfo.schemax }">
+<form action="#" >
+${pageinfo.schemax }
+
+</form>
+</c:if>
+
 </div>
 <c:if test="${fn:length(numbers) >0}">
 <div id="number-area"  style="width: 90%; 	height: 150px;clear:both;">
@@ -87,14 +94,19 @@ ${pageinfo.schemax}
 			                        ${entity.name }
 			                    </div>
 			                      <div class="ibox-number">
+			                    <c:if test="${not empty entity.formatPattern }">
+			                     <fmt:formatNumber value="${entity.script }"  pattern="${entity.formatPattern }"/>
+			                    </c:if>
+			                      <c:if test="${empty entity.formatPattern }">
+			                       <fmt:formatNumber value="${entity.script }"  pattern="#,###.##"/>
+			                      </c:if>
 			                    
-			                     <fmt:formatNumber value="${entity.script }"  pattern="#,#00"/>
 			                    </div>
 			                </div>
 			</div>
             </c:forEach>
    </div>
-      <div style="width: 100%; height: 15px"></div>
+      <div style="width: 100%; height: 20px"></div>
    
    </c:if>
    
@@ -109,13 +121,17 @@ ${pageinfo.schemax}
 				<c:set var="com_width" value="520"></c:set>
 			</c:if>
 			<div class="${entity.type}-box">
-				<div style="width: ${com_width}px; height: 400px;" id="${com_id}"></div>
+			<c:if test="${ empty entity.style}">				
+					<div style="width: ${com_width}px; height: 400px;" id="${com_id}"></div>
+			</c:if>
+			<c:if test="${not empty entity.style}">
+					<div style="${entity.style}" id="${com_id}"></div>
+			</c:if>
 			</div>
 
 		</c:forEach>
 	</div>
-	<script
-		src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+	<script src="${ctxStatic}/echarts/echarts-all-3.js"></script>
 	<script type="text/javascript">
 // 基于准备好的dom，初始化echarts图表
 <c:forEach items="${componnets}" var="entity">
@@ -126,7 +142,7 @@ myChart_${entity.id}.setOption(option_${entity.id});
 </c:if>
 
 <c:if test="${entity.type=='table'}">
-$('#container_table_${entity.id}').load("${ctx}/dataTable/tableShow?id=${entity.id}");
+$('#container_table_${entity.id}').load("${ctx}/dataTable/tableShow?id=${entity.id}&${params}");
 </c:if>
 </c:forEach>
 </script>

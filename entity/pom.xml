@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>jd.com</groupId>
-		<artifactId>kibana</artifactId>
+		<groupId>bucuoa.com</groupId>
+		<artifactId>robot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>kibana-entity</artifactId>
+	<artifactId>entity</artifactId>
 
 	<dependencies>
 		<dependency>
